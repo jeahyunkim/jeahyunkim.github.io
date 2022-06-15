@@ -74,6 +74,7 @@
             contentType: 'application/json',
             beforeSend: function(xhr) {
                 xhr.setRequestHeader("Accept", "application/json");
+                xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
             }, success: function(data){
                 console.log(data);
                 // alert(data);
