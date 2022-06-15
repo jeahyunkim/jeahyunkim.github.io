@@ -33,7 +33,7 @@
 <script>
     var logTime = Math.floor(Date.now() / 1000);
     let agent = navigator.userAgent;
-    var token = "EAAhkCOaZBncIBABK6XZAZAYyxMrYZBe9tDKZAoO5UdDVwRnASfZCqVFRuEZBVABYGfpeiqO4TZBJKCkJsDH54O33nYIzwetTPnbmZA76ZB7gxi9uWVTblGxHZCgwqMDILdaXNo8xkX12CBXydiv8reCjSJhm5EtbCgGTjvurfvHcNXMnJhlrvA3hFJ0csFTCkDMPqAZD";
+    var token = "EAAhkCOaZBncIBACAWlDCZBdepisCkmVeZBE7jAcxZABMIOgBHbp2A4I3dZCK8KwdcPDSCrPt9ZBmsR9xkNWz7XMjWB4HB6ZAS4hvp2GR0exsEk2gu84ZBMvyEZAxgVMJwbTP9ZBI9gcaplwUXe7LDpirXM9N2KjA2ys36rtogZBxoKPzCFZCb06CF0atOYNZAvizjpWYZD";
     var conversionData = {
         "data": [
             {
@@ -69,7 +69,7 @@
     function sendConversionAPI(jsonData) {
         $.ajax({
             type: "POST",
-            url: 'https://graph.facebook.com/v14.0/751344069366440/events?access_token=EAAhkCOaZBncIBABK6XZAZAYyxMrYZBe9tDKZAoO5UdDVwRnASfZCqVFRuEZBVABYGfpeiqO4TZBJKCkJsDH54O33nYIzwetTPnbmZA76ZB7gxi9uWVTblGxHZCgwqMDILdaXNo8xkX12CBXydiv8reCjSJhm5EtbCgGTjvurfvHcNXMnJhlrvA3hFJ0csFTCkDMPqAZD',
+            url: 'https://graph.facebook.com/v14.0/751344069366440/events?access_token='+token,
             data: conversionData,
             // contentType: 'application/json',
             beforeSend: function(xhr) {
