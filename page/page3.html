@@ -18,9 +18,73 @@
 <!-- Meta Pixel Code -->
 <head>
     <meta name="facebook-domain-verification" content="msckfm61jj25rmbh4gt4vwbvx468xa" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<head>
 </head>
 
 <body>
     <h1>Page3</h1>
+    <button onclick="cartBtn()">Add to cart</button><br/><br/><br/>
+    <button onclick="purchaseBtn()">Purchase</button><br/>
+
 </body>
 
+
+<script>
+    var logTime = Math.floor(Date.now() / 1000);
+    let agent = navigator.userAgent;
+    var conversionData = {
+        "data": [
+            {
+                "event_name": "add_to_cart",
+                "event_time": logTime,
+                "action_source": "email",
+                "user_data": {
+                    "client_user_agent": agent,
+                    "em": [
+                        "7b17fb0bd173f625b58636fb796407c22b3d16fc78302d79f0fd30c2fc2fc068"
+                    ]
+                },
+                "custom_data": {
+                    "currency": "KWD",
+                    "value": "100"
+                }
+            }
+        ]
+    };
+
+    function cartBtn() {
+        conversionData.data[0].event_name='add_to_cart';
+        console.log(conversionData.data[0].event_name);
+        sendConversionAPI(conversionData);
+    }
+    
+    function purchaseBtn() {
+        conversionData.data[0].event_name='purchase';
+        console.log(conversionData.data[0].event_name);
+        sendConversionAPI(conversionData);
+    }
+    
+    function sendConversionAPI(jsonData) {
+        $.ajax({
+            type: "POST",
+            url: 'https://graph.facebook.com/v14.0/751344069366440/events',
+            data: conversionData,
+            contentType: 'application/json',
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer EAAhkCOaZBncIBAJ4iLZB2IbEUmo0Xl6ZAxQjx8IBPD8sL8Jp54GUZCF5ZAzOG5C6JGU2Ezec7IFjgfVMwFTUk4u1myZA6gfXs9xzL5CfV8YIG6ZCsaZCM74gXl8ZAe3JbnvApHysPzXnUzWlb7VdprodSKld9WrFqwfo36wuHsA3thXcBtQpQFynbbVaWqPXzWosZD")
+            }, success: function(data){
+                console.log(data);
+                // alert(data);
+                //process the JSON data etc
+            }
+        })
+    }
+    
+    // console.log(conversionData);
+    // console.log(conversionData.data[0].event_name)
+    
+
+</script>
