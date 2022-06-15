@@ -75,6 +75,7 @@
             beforeSend: function(xhr) {
                 xhr.setRequestHeader("Accept", "application/json");
                 xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+                xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
             }, success: function(data){
                 console.log(data);
                 // alert(data);
