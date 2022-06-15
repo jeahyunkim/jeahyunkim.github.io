@@ -73,6 +73,7 @@
             data: conversionData,
             contentType: 'application/json',
             beforeSend: function(xhr) {
+                xhr.setRequestHeader("Accept", "application/json");
             }, success: function(data){
                 console.log(data);
                 // alert(data);
