@@ -21,8 +21,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
-<head>
-</head>
 
 <body>
     <h1>Page3</h1>
@@ -35,6 +33,7 @@
 <script>
     var logTime = Math.floor(Date.now() / 1000);
     let agent = navigator.userAgent;
+    let token = "EAAhkCOaZBncIBAFvmBYgLsgWQBr8tbeNpQ6rBi4MmBms7VsArPe4ZAZAWvmZAchsOZBiCJcjYZBr7DDAotuNkFaPZAqZCZBI3F4VD0ZBLPrOM9YHte9ShmwFENeMdR2FxfUezWNlzYIgiOVFiKhofX6YoIELAg4ztvZBG4tuci3iT2yhn3LwsCXCZCWxMWpPZCA3BMiUZD";
     var conversionData = {
         "data": [
             {
@@ -70,11 +69,10 @@
     function sendConversionAPI(jsonData) {
         $.ajax({
             type: "POST",
-            url: 'https://graph.facebook.com/v14.0/751344069366440/events',
+            url: 'https://graph.facebook.com/v14.0/751344069366440/events?access_token='+token,
             data: conversionData,
             contentType: 'application/json',
             beforeSend: function(xhr) {
-                xhr.setRequestHeader("Authorization", "Bearer EAAhkCOaZBncIBAJ4iLZB2IbEUmo0Xl6ZAxQjx8IBPD8sL8Jp54GUZCF5ZAzOG5C6JGU2Ezec7IFjgfVMwFTUk4u1myZA6gfXs9xzL5CfV8YIG6ZCsaZCM74gXl8ZAe3JbnvApHysPzXnUzWlb7VdprodSKld9WrFqwfo36wuHsA3thXcBtQpQFynbbVaWqPXzWosZD")
             }, success: function(data){
                 console.log(data);
                 // alert(data);
