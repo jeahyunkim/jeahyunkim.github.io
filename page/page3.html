@@ -55,8 +55,8 @@
                     "value": "100"
                 }
             }
-        ],
-        "test_event_code": "TEST43487"
+        ]
+        // ,"test_event_code": "TEST43487"
     };
 
     function cartBtn() {
@@ -67,6 +67,7 @@
     }
     
     function purchaseBtn() {
+        var accessToken = document.getElementById("access_token").value;
         conversionData.data[0].event_name='purchase';
         console.log(conversionData.data[0].event_name);
         sendConversionAPI(conversionData, accessToken);
@@ -90,8 +91,4 @@
         })
     }
     
-    // console.log(conversionData);
-    // console.log(conversionData.data[0].event_name)
-    
-
 </script>
