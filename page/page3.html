@@ -24,6 +24,11 @@
 
 <body>
     <h1>Page3</h1>
+
+    <form>
+        <label for="fname">Access Token</label><br>
+        <input type="text" id="access_token" name="access_token"><br><br>
+    </form> 
     <button onclick="cartBtn()">Add to cart</button><br/><br/><br/>
     <button onclick="purchaseBtn()">Purchase</button><br/>
 
@@ -33,7 +38,6 @@
 <script>
     var logTime = Math.floor(Date.now() / 1000);
     let agent = navigator.userAgent;
-    var token = "EAAhkCOaZBncIBANGO6kunzPbLG5np5SFNMj0Dv1yp48i4M2XbamNYi9ZCyyfSZARMDI8BZBspCjB463ZCNJzPGYcufvFKU3SZBIR68jKwcnOqWeEQULguHYL4U0C1PjhABAaEV8mp9oKu3ViTUAqZCv09zkTRdbddqtO3pOjpfCV3r5DqJGIOTXWWQf5rBmq8MZD";
     var conversionData = {
         "data": [
             {
@@ -51,22 +55,24 @@
                     "value": "100"
                 }
             }
-        ]
+        ],
+        "test_event_code": "TEST43487"
     };
 
     function cartBtn() {
+        var accessToken = document.getElementById("access_token").value;
         conversionData.data[0].event_name='add_to_cart';
         console.log(conversionData.data[0].event_name);
-        sendConversionAPI(conversionData);
+        sendConversionAPI(conversionData, accessToken);
     }
     
     function purchaseBtn() {
         conversionData.data[0].event_name='purchase';
         console.log(conversionData.data[0].event_name);
-        sendConversionAPI(conversionData);
+        sendConversionAPI(conversionData, accessToken);
     }
     
-    function sendConversionAPI(jsonData) {
+    function sendConversionAPI(jsonData, token) {
         $.ajax({
             type: "POST",
             url: 'https://graph.facebook.com/v14.0/751344069366440/events?access_token='+token,
